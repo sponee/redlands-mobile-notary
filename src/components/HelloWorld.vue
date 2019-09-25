@@ -91,6 +91,11 @@ export default {
   name: "HelloWorld",
   props: {
     msg: String
+  },
+  mounted() {
+    let acuityScript = document.createElement('script');
+    acuityScript.setAttribute('src', 'https://embed.acuityscheduling.com/js/embed.js')
+    document.head.appendChild(acuityScript)
   }
 };
 </script>
