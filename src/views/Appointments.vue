@@ -1,8 +1,14 @@
 <template>
-  <div class="appointments">
+  <div id="appointments"">
     <BookAnAppointment />
   </div>
 </template>
+
+<style lang="css">
+#view-container {
+  height: 100%;
+}
+</style>
 
 <script>
 // @ is an alias to /src

@@ -1,8 +1,12 @@
 <template>
-  <div class="home">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <HelloWorld />
 </template>
+
+<style lang="scss">
+#view-container {
+  height: 100vh;
+}
+</style>
 
 <script>
 // @ is an alias to /src

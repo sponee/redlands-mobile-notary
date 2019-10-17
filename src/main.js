@@ -8,5 +8,13 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  methods: {
+    openNav: function() {
+      document.getElementById("mySidenav").style.width = "0px";
+    },
+    closeNav: function() {
+      document.getElementById("mySidenav").style.width = "0";
+    },
+  },
   render: h => h(App)
 }).$mount("#app");
