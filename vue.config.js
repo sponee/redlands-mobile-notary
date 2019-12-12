@@ -3,8 +3,8 @@ module.exports = {
     s3Deploy: {
       registry: undefined,
       awsProfile: 'default',
-      region: 'us-east-1',
-      bucket: 'redlands-mobile-notary',
+      region: 'redlandsmobilenotary.com',
+      bucket: 'redlandsmobilenotary.com',
       createBucket: true,
       staticHosting: true,
       staticIndexPage: 'index.html',
