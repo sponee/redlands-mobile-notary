@@ -13,8 +13,6 @@
       <nav class="sidenav flex-column bg-dark" v-bind:class="{ open: sidenavVisible, closed: !sidenavVisible }">
         <ul class="flex-column nav">
           <li><router-link class="nav-item nav-link" v-on:click.native="closeNav" to="/">Home</router-link></li>
-          <li><router-link class="nav-item nav-link" v-on:click.native="closeNav" to="/appointments">Appointments</router-link></li>
-          <li><router-link class="nav-item nav-link" v-on:click.native="closeNav" to="/services">Services</router-link></li>
           <li><router-link class="nav-item nav-link" v-on:click.native="closeNav" to="/contact">Contact</router-link></li>
         </ul>
       </nav>

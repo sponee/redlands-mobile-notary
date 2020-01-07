@@ -1,20 +1,21 @@
 <template>
   <div id="home">
-    <form id="contact-form" method="post">
+  <h3>Request an Appointment</h3>
+    <form id="contact-form" method="post" @submit="submitToAPI">
       <div class="form-row form-group">
-        <input type="text" class="form-control" v-model="name" placeholder="name"></input>
+        <input type="text" class="form-control" v-model="name" placeholder="name" required></input>
       </div>
       <div class="form-row form-group">
         <input type="phone" id="phone-input" class="form-control" v-model="phone" placeholder="phone"></input>
       </div>
       <div class="form-row form-group">
-        <input type="email" id="email-input"  class="form-control" v-model="email" placeholder="email"></input>
+        <input type="email" id="email-input"  class="form-control" v-model="email" placeholder="email" required></input>
       </div>
       <h4 align="left">How can we help you?</h4>
       <div class="form-row form-group">
-        <textarea id="description-input" rows="3" placeholder="Enter your message" class="form-control" v-model="description"></textarea>
+        <textarea id="description-input" rows="3" placeholder="Enter your message" class="form-control" v-model="description" required=true></textarea>
       </div>
-      <button type="button" v-on:click="submitToAPI" class="btn btn-lg btn-primary" style="margin-top:20px;background-color:#42b983;border-color:#42b983;">Submit</button>
+      <input type="submit" class="btn btn-lg btn-primary" style="margin-top:20px;background-color:#42b983;border-color:#42b983;">
     </form>
   </div>
 </template>
@@ -30,19 +31,34 @@ export default {
       email: null,
       phone: null,
       description: null,
+      problems: [],
     }
   },
   methods: {
-    submitToAPI() {
-      var data = {
-        name : this.name,
-        phone : this.phone,
-        email : this.email,
-        desc : this.description
-      };
+    submitToAPI(e) {
+      if(this.email === '') {
+        this.problems.push("Name is required.");
+      }
+      if(this.description === '') {
+        this.problems.push("Email is required.");
+      }
 
-      api.contact(data).then(response => {
-      });
+      e.preventDefault();
+
+      console.log(this.problems);
+
+      if(this.problems.length === 0) {
+        var data = {
+          name : this.name,
+          phone : this.phone,
+          email : this.email,
+          desc : this.description
+        };
+
+        api.contact(data).then(response => {
+          alert(`Your request has been submitted.`);
+        });
+      }
     }
   }
 }
