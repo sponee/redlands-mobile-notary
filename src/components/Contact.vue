@@ -15,7 +15,7 @@
       <div class="form-row form-group">
         <textarea id="description-input" rows="3" placeholder="Enter your message" class="form-control" v-model="description" required=true></textarea>
       </div>
-      <input type="submit" class="btn btn-lg btn-primary" style="margin-top:20px;background-color:#42b983;border-color:#42b983;">
+      <input type="submit" :disabled="this.disabled" class="btn btn-lg btn-primary" style="margin-top:20px;background-color:#42b983;border-color:#42b983;">
     </form>
   </div>
 </template>
@@ -32,6 +32,7 @@ export default {
       phone: null,
       description: null,
       problems: [],
+      disabled: false,
     }
   },
   methods: {
@@ -55,8 +56,11 @@ export default {
           desc : this.description
         };
 
+        this.disabled = true;
+
         api.contact(data).then(response => {
-          alert(`Your request has been submitted.`);
+          alert(`Your request has been submitted.`),
+          this.disabled = false;
         });
       }
     }
